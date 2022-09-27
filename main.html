@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="design.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+</head>
+<body style="background-color: #1aa7ec; width: 100vh;">
+    <div id="DES">
+        <div id="heading">
+        <H1>STUDENT</H1>
+        <H1>GRADE</H1>
+        <H1>Calculator</H1>
+        </div> 
+        <div id="Subject">
+            <Input type="number" placeholder="MATHS" id="math"></Input>
+            <hr>
+            <Input type="number" placeholder="PHYSICS" id="phy"></Input>
+            <hr>
+            <Input type="number" placeholder="CHEMISTRY" id="che"></Input>
+            <hr>
+            <Input type="number" placeholder="PROGRAMMING" id="coding"></Input>
+            <hr>
+            <button onclick="calculate()">Calculate</button>
+            
+        </div> 
+        <div id="Grades">
+        <h2 id="Grade"></h2>
+        <H2 id="per"></H2>
+        <H2 id="pas"></H2>
+        </div>
+    </div>
+    <script>
+        const calculate = () => {
+            let math = document.getElementById('math').value;
+            let Phy = document.getElementById("phy").value;
+            let che = document.getElementById("che").value;
+            let coding = document.getElementById("coding").value;
+
+            let Total = parseFloat(math)+parseFloat(Phy)+parseFloat(che)+parseFloat(coding);
+            if(!Total ) return alert('One of the parameter is empty');
+        let percantage = (Total/400)*100;
+
+        if(math === undefined || Phy === undefined || che === undefined || coding === undefined ) {
+            
+        }
+
+        let grade;
+        let overall = 'Pass'
+        if(percantage>=80)
+        {
+            grade = 'A+';
+        }
+       else if(percantage>=70 && percantage<80)
+       {
+            grade = 'A';
+       }
+       else if(percantage>=60 && percantage<70)
+       {
+            grade = 'B';
+       }
+        else if(percantage>=50 && percantage<60)
+        {
+            grade = 'C';
+        }
+        else if(percantage<50)
+        {
+                grade = 'F';
+                overall = 'Fail'
+        }
+        document.getElementById('Grade').innerHTML = `Grade = ${grade}`
+        document.getElementById('per').innerHTML = `Percantage = ${percantage}`
+        document.getElementById('pas').innerHTML = `${overall}`
+        }
+           
+    </script>
+</body>
+</html>
